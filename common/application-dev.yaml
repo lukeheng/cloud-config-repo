@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev
+
+from: git-dev-1.0
+          

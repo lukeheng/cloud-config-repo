@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev
+
+from: config-client-dev
+          

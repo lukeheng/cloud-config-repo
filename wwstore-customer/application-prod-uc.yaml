@@ -1,0 +1,35 @@
+# for prod environment
+spring:
+  boot:
+    admin:
+      url: http://spring-boot-admin
+      username: mobvoi
+      password: mobvoi
+  gson:
+    converter:
+      enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    debug: false
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://tidb-growth-cluster:4000/wwstore_customer?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    username: mobvoi
+    password: mobvoiawesome
+  swagger:
+    enable: true
+  zipkin:
+    base-url: http://zipkin.tiktime.net
+  sleuth:
+    sampler:
+      percentage: 1
+endpoints:
+  sensitive: false
+logging:
+  level:
+    com.mobvoi.growth.wwstore: debug

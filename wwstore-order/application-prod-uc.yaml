@@ -1,0 +1,84 @@
+# for prod environment
+spring:
+  gson:
+    converter:
+      enable: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    debug: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://tidb-growth-cluster:4000/wwstore_order?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+    username: mobvoi
+    password: mobvoiawesome
+  redis:
+    host: r-bp1ff926df1a7bd4.redis.rds.aliyuncs.com
+    port: 6379
+    password: igTuujYzZSSVd75X
+    timeout: 500
+    database: 0
+    pool:
+      max-idle: 20
+      min-idle: 10
+  swagger:
+    enable: true
+  zipkin:
+    base-url: http://zipkin.tiktime.net
+  sleuth:
+    sampler:
+      percentage: 1
+endpoints:
+  sensitive: false
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://discovery-master/eureka/,http://discovery-backup/eureka/"
+    enabled: true
+# See your keys here: https://dashboard.stripe.com/account/apikeys
+# sk_live_VJJY96LGwFDoHppsMLoBWejh
+stripe:
+  secretKey: sk_test_KsiR5zG6wHfNDzznTKZSGyrD
+# https://developer.paypal.com/developer/applications/
+paypal:
+  mode: sandbox
+  clientId: AbD6S2u0GYKJRgekTqd2G9FbXtvRo5DYyJI2C-uNFkqw5eJa23dVV9aZLlxm0t_My6FI-S8INfSPAK3u
+  clientSecret: EE9EiwYd2G31cKqReSXEC7eHN7_gQJl8ddHWkVxwxcEERMd4meLNaMoauMo02zaiWIBE-ljflhaXtcW2
+  callbackDomain: https://ticbuy.mobvoi.com
+email:
+  recipients: hqliu@mobvoi.com
+  bcc: khlu@mobvoi.com,hqliu@mobvoi.com
+express:
+  url: https://express-data-api.ticwear.com/express/
+  user: 6
+  key: 774c9ee9-d501-4ad6-b2eb-e5d65fb6eabd
+  # Note that the name of the company must be uppercase
+  company: {
+    FEDEX-GROUND: fedex,
+    AUPARCEL: auspost,
+    DHL: dhlen,
+    PTSGGHR: singpost,
+    SGEMS: speedpost,
+    USPS: usps,
+    UPS: ups,
+    GLS: gls,
+    LANDMARK: landmarkglobal,
+    OTHERS: shunfeng
+  }
+adyen:
+  authorise-url: https://pal-test.adyen.com/pal/servlet/Payment/v30/authorise
+  cancel-or-refund-url: https://pal-test.adyen.com/pal/servlet/Payment/v30/cancelOrRefund
+  capture-url: https://pal-test.adyen.com/pal/servlet/Payment/v30/capture
+  refund-url: https://pal-test.adyen.com/pal/servlet/Payment/v30/refund
+  merchant-account: MobvoiHKCOM270
+  x-api-key: AQEmhmfuXNWTK0Qc+iSdnWYuqO2zY9kUVGnj3//vmnS/uMUaXChKdY0QwV1bDb7kfNy1WIxIIkxgBw==-v76D2gfOu/0xZYOdUODO4fgDDrPD9QoWJJ87Jh12faw=-BBke4T7cxsvuH8aS
+  capture-delay-hours: 1
+wwstore:
+  order:
+    # format: country_province_city
+    risk-address: MY_*_*, US_CA_Hawthorne, US_NV_Minden
+    # A month's total payment amount exceeds this and will be marked as high risk. unit: USD
+    risk-payment-amount: 800

@@ -1,0 +1,12 @@
+logging:
+  level:
+    org.springframework.cloud.config.client: WARN
+    org.springframework.boot.autoconfigure.security: WARN
+
+endpoints:
+  health:
+    sensitive: true
+  metrics:
+    sensitive: true
+
+from: git-default-1.0

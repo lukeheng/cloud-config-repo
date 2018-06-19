@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: prod
+
+from: config-client-prod
